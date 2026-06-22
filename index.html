@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdul Azis Al Rhosid — Portofolio</title>
+
+<!--
+  ============================================================================
+  PANDUAN EDIT CEPAT
+  ============================================================================
+  Cari tanda [EDIT: ...] di seluruh file ini untuk menemukan bagian yang
+  perlu Anda ganti dengan data asli Anda. Bagian utama yang perlu diedit:
+
+  1. <title> di atas             -> nama Anda
+  2. #hero                       -> nama, title/profesi, tagline, foto
+  3. #about                      -> bio singkat & data diri
+  4. #experience                 -> riwayat pekerjaan
+  5. #skills                     -> daftar keahlian
+  6. #projects                   -> proyek/karya unggulan
+  7. #resume                     -> link file resume/CV Anda
+  8. #contact / footer           -> email, no HP, LinkedIn, sosial media
+
+  Untuk FOTO: ganti div class="photo-placeholder" dengan
+  <img src="foto-anda.jpg" alt="Nama Anda" class="photo-img">
+
+  Untuk LINKEDIN: ganti semua href="#" pada link berisi kelas "linkedin-link"
+  dengan URL profil LinkedIn Anda, contoh: https://linkedin.com/in/username
+
+  Untuk RESUME: ganti href="#" pada tombol "Unduh CV" dengan path file PDF
+  resume Anda, contoh: href="resume-nama-anda.pdf"
+  ============================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #FCFBF9;
+    --bg-soft: #F4F2ED;
+    --ink: #14161A;
+    --muted: #80858f;
+    --line: #E7E3DC;
+    --violet: #6C4EFF;
+    --violet-soft: #EFEBFF;
+    --coral: #FF6B5B;
+    --coral-soft: #FFEDE9;
+    --yellow: #FFD23F;
+    --mint: #18C29C;
+    --mint-soft: #E6FAF4;
+    --radius: 18px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width:100%; display:block; }
+  ul{ list-style: none; }
+  button{ font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  :focus-visible{
+    outline: 3px solid var(--violet);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--violet);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .eyebrow::before{
+    content: "";
+    width: 8px; height: 8px;
+    background: var(--coral);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  h1,h2,h3{ font-family: var(--display); font-weight: 700; letter-spacing: -0.02em; }
+
+  .section-title{
+    font-size: clamp(28px, 4vw, 42px);
+    margin-bottom: 8px;
+  }
+  .section-sub{
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 48px;
+    font-size: 16px;
+  }
+
+  /* ===================== NAV ===================== */
+  header.nav{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(252,251,249,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s ease, box-shadow .3s ease;
+  }
+  header.nav.scrolled{
+    border-bottom-color: var(--line);
+    box-shadow: 0 4px 24px rgba(20,22,26,0.04);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 18px 0;
+  }
+  .logo{
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 20px;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .logo-mark{
+    width: 34px; height: 34px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--violet), var(--coral));
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-size: 14px; font-weight:700;
+  }
+  .nav-links{
+    display:flex;
+    gap: 32px;
+    font-size: 14.5px;
+    font-weight: 500;
+  }
+  .nav-links a{
+    position: relative;
+    padding: 4px 0;
+    color: var(--ink);
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute; left:0; bottom:-2px;
+    width:0; height:2px;
+    background: var(--coral);
+    transition: width .25s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14.5px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary{
+    background: var(--ink);
+    color: #fff;
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20,22,26,0.22); }
+  .btn-outline{
+    border: 1.5px solid var(--ink);
+  }
+  .btn-outline:hover{ background: var(--ink); color:#fff; }
+  .btn-coral{ background: var(--coral); color:#fff; }
+  .btn-coral:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255,107,91,0.35); }
+
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  .nav-toggle{ display:none; }
+
+  /* ===================== HERO ===================== */
+  .hero{
+    position: relative;
+    padding: 88px 0 0;
+    overflow: hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .hero-name{
+    font-size: clamp(46px, 7vw, 84px);
+    line-height: 0.98;
+    margin-bottom: 18px;
+  }
+  .hero-name .accent{
+    color: var(--violet);
+    -webkit-text-stroke: 0;
+  }
+  .hero-role{
+    display:inline-block;
+    font-family: var(--mono);
+    font-size: 15px;
+    background: var(--yellow);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-bottom: 22px;
+    transform: rotate(-1.5deg);
+  }
+  .hero-tagline{
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 34px;
+  }
+  .hero-actions{ display:flex; gap:14px; flex-wrap: wrap; }
+
+  .hero-photo{
+    position: relative;
+    aspect-ratio: 1/1.08;
+    border-radius: 32px;
+    overflow: hidden;
+    background: linear-gradient(155deg, var(--violet) 0%, var(--coral) 100%);
+  }
+  .photo-placeholder{
+    position:absolute; inset: 0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    color: rgba(255,255,255,0.92);
+    text-align:center;
+    padding: 2px;
+  }
+  .photo-placeholder .initials{
+    font-family: var(--display);
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .photo-placeholder .note{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    border: 1.5px dashed rgba(255,255,255,0.6);
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.12);
+  }
+  .photo-img{ width:100%; height:100%; object-fit: cover; }
+  .hero-photo-tag{
+    position:absolute;
+    bottom: 18px; left: 18px;
+    background: #fff;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display:flex; align-items:center; gap:8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+  .hero-photo-tag .dot{
+    width:8px; height:8px; border-radius:50%; background: var(--mint);
+  }
+
+  .marquee-track{
+    display:inline-flex;
+    animation: scroll-left 28s linear infinite;
+  }
+  .marquee-track span{
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    padding: 0 28px;
+    display:inline-flex;
+    align-items:center;
+    gap: 28px;
+  }
+  .marquee-track span::after{ content:"✦"; color: var(--coral); }
+  @keyframes scroll-left{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+
+  /* ===================== ABOUT ===================== */
+  .about{ padding: 110px 0 90px; }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+  }
+  .about-bio p{ margin-bottom: 18px; color: #2b2e35; font-size: 16.5px; }
+  .about-bio p:last-child{ margin-bottom:0; }
+
+  .fact-list{
+    background: var(--bg-soft);
+    border-radius: var(--radius);
+    padding: 28px;
+    border: 1px solid var(--line);
+  }
+  .fact-item{
+    display:flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  .fact-item:last-child{ border-bottom:none; padding-bottom:0; }
+  .fact-item:first-child{ padding-top:0; }
+  .fact-label{ color: var(--muted); font-family: var(--mono); font-size: 13px; }
+  .fact-value{ font-weight: 600; text-align:right; }
+
+  /* ===================== EXPERIENCE ===================== */
+  .experience{ padding: 90px 0; background: var(--bg-soft); }
+  .timeline{ position: relative; padding-left: 32px; }
+  .timeline::before{
+    content:"";
+    position:absolute; left:0; top:8px; bottom:8px;
+    width:2px;
+    background: var(--line);
+  }
+  .timeline-item{
+    position: relative;
+    padding-bottom: 44px;
+  }
+  .timeline-item:last-child{ padding-bottom:0; }
+  .timeline-item::before{
+    content:"";
+    position:absolute;
+    left: -38px; top: 4px;
+    width: 14px; height:14px;
+    border-radius: 50%;
+    background: var(--violet);
+    border: 3px solid var(--bg-soft);
+    box-shadow: 0 0 0 2px var(--violet);
+  }
+  .timeline-card{
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 28px;
+  }
+  .timeline-top{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .timeline-role{ font-family: var(--display); font-size: 19px; font-weight: 600; }
+  .timeline-period{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--violet);
+    background: var(--violet-soft);
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .timeline-company{ color: var(--coral); font-weight: 600; font-size: 14.5px; margin-bottom: 12px; }
+  .timeline-card ul{ margin-top: 10px; }
+  .timeline-card li{
+    font-size: 14.5px;
+    color: #3a3d44;
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .timeline-card li::before{
+    content:"—";
+    position:absolute; left:0; color: var(--muted);
+  }
+
+  /* ===================== SKILLS ===================== */
+  .skills{ padding: 90px 0; }
+  .skills-groups{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .skill-group{
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px;
+  }
+  .skill-group h3{
+    font-size: 16px;
+    margin-bottom: 16px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .skill-group .swatch{ width:10px; height:10px; border-radius:3px; }
+  .chip-row{ display:flex; flex-wrap: wrap; gap: 8px; }
+  .chip{
+    font-size: 13px;
+    font-family: var(--mono);
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    font-weight: 500;
+  }
+
+  /* ===================== PROJECTS ===================== */
+  .projects{ padding: 90px 0; background: var(--bg-soft); }
+  .project-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .project-card{
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    padding: 30px;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .project-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 18px 36px rgba(20,22,26,0.08);
+  }
+  .project-num{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display:block;
+  }
+  .project-card h3{ font-size: 21px; margin-bottom: 10px; }
+  .project-card p{ color: var(--muted); font-size: 14.5px; margin-bottom: 18px; }
+  .project-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom: 18px; }
+  .project-tags span{
+    font-size: 12px;
+    font-family: var(--mono);
+    background: var(--mint-soft);
+    color: #0e8a6e;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .project-link{
+    font-weight: 600;
+    font-size: 14px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color: var(--ink);
+  }
+  .project-link .arrow{ transition: transform .2s ease; }
+  .project-link:hover .arrow{ transform: translateX(4px); }
+
+  /* ===================== RESUME ===================== */
+  .resume{ padding: 100px 0; }
+  .resume-card{
+    background: linear-gradient(135deg, var(--violet), #4429d6);
+    border-radius: 28px;
+    padding: 56px;
+    color: #fff;
+    display:grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .resume-card::before{
+    content:"";
+    position:absolute;
+    width: 320px; height: 320px;
+    background: var(--coral);
+    opacity: 0.35;
+    border-radius: 50%;
+    right: -100px; top: -120px;
+    filter: blur(10px);
+  }
+  .resume-card h2{ font-size: clamp(26px,3.4vw,36px); margin-bottom: 14px; position:relative; }
+  .resume-card p{ opacity:0.85; margin-bottom: 26px; max-width: 420px; position:relative; }
+  .resume-actions{ display:flex; gap:14px; flex-wrap:wrap; position:relative; }
+  .resume-card .btn-light{ background:#fff; color: var(--violet); }
+  .resume-card .btn-line{ border: 1.5px solid rgba(255,255,255,0.7); color:#fff; }
+
+  .resume-meta{
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 16px;
+    padding: 22px;
+    position:relative;
+  }
+  .resume-meta .row{ display:flex; justify-content: space-between; padding: 9px 0; font-size: 13.5px; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .resume-meta .row:last-child{ border-bottom:none; }
+  .resume-meta .row span:first-child{ opacity:0.75; font-family: var(--mono); font-size:12px; }
+
+  /* ===================== CONTACT / FOOTER ===================== */
+  .contact{ padding: 100px 0 60px; }
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+  .contact h2{ font-size: clamp(30px,4.5vw,48px); margin-bottom: 18px; }
+  .contact-sub{ color: var(--muted); max-width: 420px; margin-bottom: 30px; }
+  .social-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .social-card{
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display:flex; align-items:center; gap: 12px;
+    font-weight: 600;
+    font-size: 14.5px;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .social-card:hover{ border-color: var(--ink); transform: translateY(-3px); }
+  .social-icon{
+    width: 34px; height:34px;
+    border-radius: 9px;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-size: 14px;
+    flex-shrink:0;
+  }
+
+  .contact-form{ display:flex; flex-direction:column; gap: 14px; }
+  .contact-form input, .contact-form textarea{
+    font-family: var(--body);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 14.5px;
+    background: var(--bg-soft);
+  }
+  .contact-form input:focus, .contact-form textarea:focus{ outline: 2px solid var(--violet); border-color: transparent; }
+  .contact-form textarea{ resize: vertical; min-height: 110px; }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 28px 0;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
+  .reveal{ opacity:0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform: translateY(0); }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 920px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-photo{ max-width: 380px; margin: 0 auto; aspect-ratio: 1/1; }
+    .about-grid{ grid-template-columns: 1fr; }
+    .skills-groups{ grid-template-columns: 1fr 1fr; }
+    .project-grid{ grid-template-columns: 1fr; }
+    .resume-card{ grid-template-columns: 1fr; }
+    .contact-grid{ grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px){
+    .wrap{ padding: 0 20px; }
+    .nav-links{ display:none; }
+    .nav-toggle{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border:1px solid var(--line); border-radius:10px; }
+    .skills-groups{ grid-template-columns: 1fr; }
+    .social-grid{ grid-template-columns: 1fr; }
+    .resume-card{ padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="siteNav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">Roajis</span>
+
+    </a>
+    <nav class="nav-links">
+      <a href="#about">Tentang</a>
+      <a href="#experience">Pengalaman</a>
+      <a href="#skills">Keahlian</a>
+      <a href="#resume">Resume</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
+      <button class="nav-toggle" aria-label="Buka menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal in">
+        <!-- [EDIT: Nama lengkap Anda] -->
+        <h1 class="hero-name">Abdul<br>Azis<br><span class="accent">Al Rhosid</span></h1>
+        <!-- [EDIT: Profesi/title Anda] -->
+        <div class="hero-actions">
+          <!-- [EDIT: ganti href dengan path file resume Anda] -->
+          <a href="https://drive.google.com/file/d/10NkRUZK6whfzU5Dyt_tmejbOqS2oYRTR/view?usp=drive_link" class="btn btn-primary">Unduh CV ↓</a>
+          <!-- [EDIT: ganti href dengan link LinkedIn Anda] -->
+          <a href="https://www.linkedin.com/in/abdul-azis-al-rhosid-70b287281?utm_source=share_via&utm_content=profile&utm_medium=member_ios" class="btn btn-outline linkedin-link">Lihat LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div class="reveal in">
+        <div class="hero-photo">
+          <div class="photo-placeholder">
+            <img src="fotoku/WhatsApp Image 2026-06-20 at 22.27.37.jpeg" alt="ABDUL AZIS AL" class="photo-img">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+    </div>
+  </div>
+</section>
+<!-- ===================== ABOUT ===================== -->
+<section class="about" id="about">
+  <div class="wrap">
+    <p class="eyebrow">ABOUT ME </p>
+    <h2 class="section-title reveal">Mari mengenal saya lebih dekat.</h2>
+        <div class="about-grid">
+      <div class="about-bio reveal">
+        <!-- [EDIT: paragraf bio Anda, 2-3 paragraf] -->
+        <p>Saya menyelesaikan pendidikan Sarjana Komputer di Universitas Bina Sarana Informatika, tempat saya mulai membangun fondasi berpikir logis dan pemecahan masalah berbasis teknologi. Dari sana, perjalanan profesional saya justru banyak terbentuk di dunia industri manufaktur, di mana saya belajar langsung bagaimana sistem, proses, dan teknologi bertemu dengan kebutuhan operasional yang nyata di lapangan.</p>
+        <p>Selama lebih dari 9 tahun berkecimpung di industri manufaktur, saya terbiasa bekerja dengan pendekatan yang sistematis, teliti, dan berorientasi pada efisiensi proses. Saya paling senang menghadapi masalah yang melibatkan perbaikan alur kerja, ketepatan data, dan kolaborasi lintas tim, karena di situlah dampak nyata dari sebuah solusi paling terasa.</p>
+        <p>Di luar pekerjaan, saya memiliki minat besar terhadap bahasa asing, khususnya bahasa Jepang dan Inggris, yang terus saya pelajari secara konsisten. Minat ini menjadi salah satu pendorong saya untuk membuka peluang karier yang lebih luas, termasuk kesempatan untuk bekerja dalam lingkungan internasional di masa depan.</p>
+      </div>
+      <div class="fact-list reveal">
+        <div class="fact-item"><span class="fact-label">NAMA</span><span class="fact-value">Abdul Azis Al Rhosid</span></div>
+        <div class="fact-item"><span class="fact-label">LOKASI</span><span class="fact-value">Jakarta, Indonesia</span></div>
+        <div class="fact-item"><span class="fact-label">EMAIL</span><span class="fact-value">alrhosid@gmail.com</span></div>
+        <div class="fact-item"><span class="fact-label">TELEPON</span><span class="fact-value">+62 812-9269-6966</span></div>
+        <div class="fact-item"><span class="fact-label">PENDIDIKAN</span><span class="fact-value">Universitas Bina Sarana Informatika</span></div>
+        <div class="fact-item"><span class="fact-label">STATUS</span><span class="fact-value">Terbuka untuk setiap kesempatan</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section class="experience" id="experience">
+  <div class="wrap">
+    <p class="eyebrow">Perjalanan Karier</p>
+    <h2 class="section-title reveal">Pengalaman kerja.</h2>
+    <p class="section-sub reveal">Ringkasan posisi dan pencapaian utama saya.Berikut uraianya.</p>
+
+    <div class="timeline">
+      <!-- [EDIT: duplikasi blok .timeline-item ini untuk setiap pengalaman kerja] -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <span class="timeline-role">Staff Production</span>
+            <span class="timeline-period">2026 — Sekarang</span>
+          </div>
+          <div class="timeline-company">PT MARUHACHI INDONESIA</div>
+          <ul>
+            <li>Menyusun dan menyajikan laporan produksi harian sebagai bahan rapat pagi bersama Presiden Direktur, mencakup pencapaian produksi, kendala operasional, dan tindak lanjut perbaikan</li>
+            <li>Melakukan analisis terhadap kendala produksi, mengidentifikasi akar penyebab masalah, serta memberikan rekomendasi tindakan korektif untuk meningkatkan efektivitas proses produksi</li>
+            <li>Menyiapkan data dan laporan kinerja produksi untuk kebutuhan Management Review, termasuk evaluasi KPI, pencapaian target, dan peluang peningkatan berkelanjutan</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <span class="timeline-role">SPRAY MAN</span>
+            <span class="timeline-period">2019 — 2025</span>
+          </div>
+          <div class="timeline-company">PT YAMAHA MUSICAL PRODUCTS ASIA</div>
+          <ul>
+            <li>Melaksanakan proses painting sesuai standar kualitas dan target produksi.</li>
+            <li>Menyusun laporan harian produksi dan kualitas untuk disampaikan kepada Leader.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <span class="timeline-role">Pendidikan</span>
+            <span class="timeline-period">2022 — 2026</span>
+          </div>
+          <div class="timeline-company">Universitas Bina Sarana Informatika — Sistem Informasi</div>
+          <ul>
+            <li>LPPMI UBSI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section class="skills" id="skills">
+  <div class="wrap">
+    <p class="eyebrow">SKILL</p>
+    <h2 class="section-title reveal">Apa yang saya kuasai.</h2>
+    <p class="section-sub reveal">Kelompok keahlian teknis, alat bantu, dan soft skill Anda.</p>
+
+    <div class="skills-groups">
+      <!-- [EDIT: ganti isi setiap kelompok skill sesuai kebutuhan] -->
+      <div class="skill-group reveal">
+        <h3><span class="swatch" style="background:var(--violet)"></span>Keahlian Inti</h3>
+        <div class="chip-row">
+          <span class="chip">Spray Painting</span>
+          <span class="chip">Problem Analysis</span>
+          <span class="chip">Quality Control</span>
+          <span class="chip">Daily Reporting</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3><span class="swatch" style="background:var(--coral)"></span>Tools & Software</h3>
+        <div class="chip-row">
+          <span class="chip">MS OFFICE</span>
+          <span class="chip">CANVA</span>
+          <span class="chip">FIGMA</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3><span class="swatch" style="background:var(--mint)"></span>Soft Skill</h3>
+        <div class="chip-row">
+          <span class="chip">Public speaking</span>
+          <span class="chip">Kepemimpinan</span>
+          <span class="chip">Problem Solving</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===================== RESUME ===================== -->
+<section class="resume" id="resume">
+  <div class="wrap">
+    <div class="resume-card reveal">
+      <div>
+        <h2>Ingin tahu lebih lengkap?</h2>
+        <p>Unduh resume lengkap saya untuk melihat detail riwayat pendidikan, pengalaman kerja, dan pencapaian profesional.</p>
+        <div class="resume-actions">
+          <!-- [EDIT: ganti href dengan path file PDF resume Anda] -->
+          <a href="#" class="btn btn-light">Unduh Resume (PDF) ↓</a>
+          <!-- [EDIT: ganti href dengan link LinkedIn Anda] -->
+          <a href="https://www.linkedin.com/in/abdul-azis-al-rhosid-70b287281?utm_source=share_via&utm_content=profile&utm_medium=member_ios" class="btn btn-line linkedin-link">Hubungkan di LinkedIn ↗</a>
+        </div>
+      </div>
+      <div class="resume-meta">
+        <div class="row"><span>FORMAT</span><span>PDF</span></div>
+        <div class="row"><span>BAHASA</span><span>Indonesia</span></div>
+        <div class="row"><span>TERAKHIR DIPERBARUI</span><span>Juni 2026</span></div>
+        <div class="row"><span>UKURAN FILE</span><span>~500 KB</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="eyebrow">CONTACT</p>
+        <h2>Mari terhubung.</h2>
+        <p class="contact-sub">Terbuka untuk diskusi peluang kerja, kolaborasi proyek, atau sekadar menyapa.</p>
+
+        <div class="social-grid">
+          <!-- [EDIT: ganti seluruh href dengan link sosial media Anda] -->
+          <a href="https://www.linkedin.com/in/abdul-azis-al-rhosid-70b287281?utm_source=share_via&utm_content=profile&utm_medium=member_ios" class="social-card linkedin-link">
+            <span class="social-icon" style="background:#0A66C2;">in</span>LinkedIn
+          </a>
+          <a href="alrhosid@gmail.com.com" class="social-card">
+            <span class="social-icon" style="background:var(--coral);">@</span>Email
+          </a>
+          <a href="https://github.com/ABDUL1-SVG" class="social-card">
+            <span class="social-icon" style="background:var(--ink);">GH</span>GitHub
+          </a>
+          <a href="https://www.instagram.com/roajis/" class="social-card">
+            <span class="social-icon" style="background:var(--violet);">IG</span>Instagram
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" onsubmit="return false;">
+        <input type="text" placeholder="Nama Anda" required>
+        <input type="email" placeholder="Email Anda" required>
+        <textarea placeholder="Pesan Anda"></textarea>
+        <button type="submit" class="btn btn-coral" style="align-self:flex-start;">Kirim Pesan</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+    <!-- [EDIT: ganti nama & tahun] -->
+    <span>© 2026 Abdul Azis Semua hak dilindungi</span>
+    <span style="color: red; font-size: 1.9em;">♥</span>
+  </div>
+</footer>
+
+<script>
+  // Navbar shadow saat scroll
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Mobile nav toggle (sederhana: scroll ke kontak jika menu ditekan tanpa menu mobile penuh)
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (toggle){
+    toggle.addEventListener('click', () => {
+      const isOpen = navLinks.style.display === 'flex';
+      navLinks.style.display = isOpen ? 'none' : 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'fixed';
+      navLinks.style.top = '64px';
+      navLinks.style.left = '0';
+      navLinks.style.right = '0';
+      navLinks.style.background = '#fff';
+      navLinks.style.padding = '20px 24px';
+      navLinks.style.borderBottom = '1px solid var(--line)';
+      navLinks.style.gap = '18px';
+    });
+  }
+</script>
+
+</body>
+</html>
